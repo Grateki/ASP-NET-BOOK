@@ -5,10 +5,10 @@
         public int BookId { get; set; }
         public string? Title { get; set; }
         public string? Isbn { get; set; }
-       public int? Year { get; set; }
+        public DateTime? Year { get; set; }
 
 
-      public int? AuthorId { get; set; }
+        public int? AuthorId { get; set; }
       public virtual AuthorModel? Author { get; set; }
        
     }

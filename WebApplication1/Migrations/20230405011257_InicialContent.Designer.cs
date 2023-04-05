@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleDeLivros.Migrations
 {
     [DbContext(typeof(RelacaoLivrosDBContext))]
-    [Migration("20230404223057_VincularAutorLivro")]
-    partial class VincularAutorLivro
+    [Migration("20230405011257_InicialContent")]
+    partial class InicialContent
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,9 +42,9 @@ namespace ControleDeLivros.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("Birth")
+                    b.Property<DateTime?>("Birth")
                         .IsRequired()
-                        .HasColumnType("int");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -75,9 +75,9 @@ namespace ControleDeLivros.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int?>("Year")
+                    b.Property<DateTime?>("Year")
                         .IsRequired()
-                        .HasColumnType("int");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("BookId");
 

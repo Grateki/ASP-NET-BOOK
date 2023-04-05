@@ -40,9 +40,9 @@ namespace ControleDeLivros.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("Birth")
+                    b.Property<DateTime?>("Birth")
                         .IsRequired()
-                        .HasColumnType("int");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -73,9 +73,9 @@ namespace ControleDeLivros.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int?>("Year")
+                    b.Property<DateTime?>("Year")
                         .IsRequired()
-                        .HasColumnType("int");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("BookId");
 

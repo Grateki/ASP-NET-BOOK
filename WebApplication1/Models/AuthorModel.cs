@@ -8,7 +8,7 @@ namespace ControleDeLivros.Models
         public string? AuthorName { get; set; }
         public string? AuthorLastName { get; set; }
         public string? Email { get; set; }
-       public int? Birth { get; set; }
+       public DateTime? Birth { get; set; }
 
 
     }

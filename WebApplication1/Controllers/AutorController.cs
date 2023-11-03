@@ -1,5 +1,7 @@
 ﻿using ControleDeLivros.Models;
 using ControleDeLivros.Repository.Interfaces;
+using ControleDeLivros.Services.Implementation;
+using ControleDeLivros.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,51 +12,108 @@ namespace ControleDeLivros.Controllers
     [ApiController]
     public class AutorController : ControllerBase
     {
-        private readonly IAuthorRepository _authorRepository;
-        public AutorController(IAuthorRepository authorRepository)
+        private readonly IAutorService _autorService;
+        public AutorController(IAutorService autorService)
         {
-            _authorRepository = authorRepository;
+            _autorService = autorService;
         }
 
         [HttpGet]
+        [Produces("application/json")]
         public async Task<ActionResult<List<AuthorModel>>> GetAuthorAsync()
         {
-            List<AuthorModel> authors = await _authorRepository.GetAuthorAsync();
-            return Ok(authors);
+            try
+            {
+                List<AuthorModel> autores = await _autorService.GetAuthorsAsync();
+                return Ok(autores);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao obter autores: {ex.Message}");
+            }
         }
         [HttpGet("{AuthorId}")]
+        [Produces("application/json")]
         public async Task<ActionResult<AuthorModel>> GetAuthorByIdAsync(int AuthorId)
         {
-            AuthorModel authors = await _authorRepository.GetAuthorByIdAsync(AuthorId);
-            return Ok(authors);
+            try
+            {
+                AuthorModel autor = await _autorService.GetAuthorByIdAsync(AuthorId);
+                if (autor != null)
+                {
+                    return Ok(autor);
+                }
+                else
+                {
+                    return NotFound($"Autor com ID {AuthorId} não encontrado");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao obter autor: {ex.Message}");
+            }
         }
 
         [HttpPost("cadastroAutor")]
-        public async Task<ActionResult<AuthorModel>> AddAuthor([FromBody] AuthorModel authors)
+        [Produces("application/json")]
+        public async Task<ActionResult<AuthorModel>> AddAuthor([FromBody] AuthorModel autor)
         {
-            AuthorModel addAuthor = await _authorRepository.AddAuthor(authors);
-
-            return Ok(addAuthor);
+            try
+            {
+                AuthorModel addedAutor = await _autorService.AddAuthorAsync(autor);
+                return CreatedAtAction(nameof(GetAuthorByIdAsync), new { AutorId = addedAutor.AuthorId }, addedAutor);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao adicionar autor: {ex.Message}");
+            }
         }
 
-        [HttpPut("{AuthorId}")]
-        public async Task<ActionResult<AuthorModel>> RefreshAuthor([FromBody] AuthorModel authorModel, int AuthorId)
+        [HttpPut("{AutorId}")]
+        [Produces("application/json")]
+        public async Task<ActionResult<AuthorModel>> UpdateAutor(int AutorId, [FromBody] AuthorModel autor)
         {
-            authorModel.AuthorId = AuthorId;
-            AuthorModel authorRefresh = await _authorRepository.RefreshAuthor(authorModel, AuthorId);
+            try
+            {
+                AuthorModel updatedAutor = await _autorService.UpdateAuthorAsync(AutorId, autor);
 
-            return Ok(authorRefresh);
+                if (updatedAutor != null)
+                {
+                    return Ok(updatedAutor);
+                }
+                else
+                {
+                    return NotFound($"Autor com ID {AutorId} não encontrado");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao atualizar autor: {ex.Message}");
+            }
         }
 
-        [HttpDelete("{AuthorId}")]
-
-        public async Task<ActionResult<AuthorModel>> DeleteAuthorAsync (int AuthorId)
+        [HttpDelete("{AutorId}")]
+        [Produces("application/json")]
+        public async Task<ActionResult<bool>> DeleteAutorAsync(int AutorId)
         {
-            
-            bool erased = await _authorRepository.DeleteAuthorAsync(AuthorId);
-            return Ok(erased);
+            try
+            {
+                bool deleted = await _autorService.DeleteAuthorAsync(AutorId);
 
+                if (deleted)
+                {
+                    return Ok(true);
+                }
+                else
+                {
+                    return NotFound($"Autor com ID {AutorId} não encontrado");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao excluir autor: {ex.Message}");
+            }
         }
-       
+
     }
 }

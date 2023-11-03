@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ControleDeLivros.Models.AuthorModel>
+
+@{
+    ViewData["Title"] = "Lista de Autores";
+}
+
+<div class="container">
+    <h1>Lista de Autores</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Adicionar Novo Autor</a>
+    </p>
+
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+                <th>Data de Nascimento</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var author in Model)
+            {
+                <tr>
+                    <td>@author.AuthorName</td>
+                    <td>@author.AuthorLastName</td>
+                    <td>@author.Email</td>
+                    <td>@(author.Birth.ToString("dd/MM/yyyy") ?? "-")</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@author.AuthorId" class="btn btn-primary">Editar</a>
+                        <a asp-action="Details" asp-route-id="@author.AuthorId" class="btn btn-info">Detalhes</a>
+                        <a asp-action="Delete" asp-route-id="@author.AuthorId" class="btn btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

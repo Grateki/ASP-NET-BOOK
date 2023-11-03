@@ -1,6 +1,6 @@
 ﻿using ControleDeLivros.Models;
-using ControleDeLivros.Repository.Interfaces;
-using Microsoft.AspNetCore.Http;
+using ControleDeLivros.Services;
+using ControleDeLivros.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -10,50 +10,104 @@ namespace ControleDeLivros.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly IBooksRepository _bookRepository;
-        public BookController(IBooksRepository bookRepository)
+        private readonly IBookService _bookService;
+
+        public BookController(IBookService bookService)
         {
-            _bookRepository = bookRepository;
+            _bookService = bookService;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<BookModel>>> GetAllBooks()
         {
-            List<BookModel> books = await _bookRepository.GetAllBooks();
-            return Ok(books);
+            try
+            {
+                List<BookModel> books = await _bookService.GetAllBooksAsync();
+                return Ok(books);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao obter livros: {ex.Message}");
+            }
         }
         [HttpGet("{BookId}")]
         public async Task<ActionResult<AuthorModel>> GetBookByIdAsync(int BookId)
         {
-            BookModel books = await _bookRepository.GetBookByIdAsync(BookId);
-            return Ok(books);
+            try
+            {
+                BookModel book = await _bookService.GetBookByIdAsync(BookId);
+                if (book != null)
+                {
+                    return Ok(book);
+                }
+                else
+                {
+                    return NotFound($"Livro com ID {BookId} não encontrado");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao obter livro: {ex.Message}");
+            }
         }
 
         [HttpPost("cadastroLivro")]
         public async Task<ActionResult<BookModel>> AddBook([FromBody] BookModel books)
         {
-            BookModel addBook = await _bookRepository.AddBook(books);
-
-            return Ok(addBook);
+            try
+            {
+                BookModel addedBook = await _bookService.AddBookAsync(books);
+                return CreatedAtAction(nameof(GetBookByIdAsync), new { BookId = addedBook.BookId }, addedBook);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao adicionar livro: {ex.Message}");
+            }
         }
 
         [HttpPut("{BookId}")]
         public async Task<ActionResult<BookModel>> RefreshBooks([FromBody] BookModel bookModel, int BookId)
         {
-            bookModel.BookId = BookId;
-            BookModel bookRefresh = await _bookRepository.RefreshBooks(bookModel, BookId);
+            try
+            {
+                BookModel updatedBook = await _bookService.UpdateBookAsync(BookId, bookModel);
 
-            return Ok(bookRefresh);
+                if (updatedBook != null)
+                {
+                    return Ok(updatedBook);
+                }
+                else
+                {
+                    return NotFound($"Livro com ID {BookId} não encontrado");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao atualizar livro: {ex.Message}");
+            }
         }
 
         [HttpDelete("{BookId}")]
 
         public async Task<ActionResult<BookModel>> DeleteBook (int BookId)
         {
-            
-            bool erased = await _bookRepository.DeleteBook(BookId);
-            return Ok(erased);
+            try
+            {
+                bool deleted = await _bookService.DeleteBookAsync(BookId);
 
+                if (deleted)
+                {
+                    return Ok(true);
+                }
+                else
+                {
+                    return NotFound($"Livro com ID {BookId} não encontrado");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao excluir livro: {ex.Message}");
+            }
         }
        
     }

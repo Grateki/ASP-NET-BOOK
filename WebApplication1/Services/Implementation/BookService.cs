@@ -17,8 +17,17 @@ namespace ControleDeLivros.Services
 
         public async Task<List<BookModel>> GetAllBooksAsync()
         {
-            var books = await _bookRepository.GetAllBooks();
-            return books ?? new List<BookModel>();
+            try {
+                var books = await _bookRepository.GetAllBooks();
+                return books ?? new List<BookModel>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+            
+           
         }
 
         public async Task<BookModel> GetBookByIdAsync(int bookId)

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using ControleDeLivros.Services.Implementation;
 using ControleDeLivros.Services.Interfaces;
 using ControleDeLivros.Services;
+using Microsoft.Extensions.Options;
 
 namespace WebApplication1
 {
@@ -14,6 +15,7 @@ namespace WebApplication1
     {
 
         public IConfiguration Configuration { get; }
+
 
         public Startup(IConfiguration configuration)
         {
@@ -33,8 +35,8 @@ namespace WebApplication1
             });
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-            services.AddDbContext<RelacaoLivrosDBContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DataBase"))
+            services.AddEntityFrameworkSqlite().AddDbContext<RelacaoLivrosDBContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DataBase"))
             );
 
             services.AddScoped<IAuthorRepository, AuthorRepository>();
@@ -43,12 +45,21 @@ namespace WebApplication1
             services.AddScoped<IBookService, BookService>();
 
             // Adicione outras configurações de serviços conforme necessário
+           var datab = services.BuildServiceProvider();
+            using(var scope =datab.CreateScope())
+            {
+                var scopedServices = scope.ServiceProvider;
+                var db = scopedServices.GetRequiredService<RelacaoLivrosDBContext>();
+                db.Database.EnsureCreated();
+            }
         }
 
         public void Configure(IApplicationBuilder app)
         {
             // Configure middleware here
+            
             app.UseRouting();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -58,9 +69,11 @@ namespace WebApplication1
             app.UseSwagger();
             app.UseSwaggerUI();
             
+           
 
             app.UseHttpsRedirection();
             app.UseAuthorization();
         }
+
     }
 }

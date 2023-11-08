@@ -908,3 +908,6 @@ C:\Users\Rafael\source\repos\ASP-NET-BOOK\WebApplication1\bin\Debug\net6.0\refs\
 C:\Users\Rafael\source\repos\ASP-NET-BOOK\WebApplication1\bin\Debug\net6.0\refs\WindowsBase.dll
 C:\Users\Rafael\source\repos\ASP-NET-BOOK\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 C:\Users\Rafael\source\repos\ASP-NET-BOOK\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
+C:\Users\Rafael\source\repos\ASP-NET-BOOK\WebApplication1\bin\Debug\net6.0\ControleDeLivros.staticwebassets.runtime.json
+C:\Users\Rafael\source\repos\ASP-NET-BOOK\WebApplication1\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Rafael\source\repos\ASP-NET-BOOK\WebApplication1\obj\Debug\net6.0\scopedcss\projectbundle\ControleDeLivros.bundle.scp.css

@@ -4,7 +4,7 @@ using ControleDeLivros.Models;
 using ControleDeLivros.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-[Route("Autor")]
+[Route("AutorView")]
 
 public class AutorViewController : Controller
 {
@@ -25,9 +25,9 @@ public class AutorViewController : Controller
 
     [HttpGet]
     [Route("Details/{AuthorId}")]
-    public async Task<IActionResult> Details(int id)
+    public async Task<IActionResult> Details(int AuthorId)
     {
-        var autor = await _autorService.GetAuthorByIdAsync(id);
+        var autor = await _autorService.GetAuthorByIdAsync(AuthorId);
 
         if (autor != null)
         {
@@ -35,7 +35,7 @@ public class AutorViewController : Controller
         }
         else
         {
-            return NotFound($"Autor com ID {id} não encontrado");
+            return NotFound($"Autor com ID {AuthorId} não encontrado");
         }
     }
     [HttpGet]
@@ -63,9 +63,9 @@ public class AutorViewController : Controller
 
     [HttpGet]
     [Route("Edit/{AuthorId}")]
-    public async Task<IActionResult> Edit(int id)
+    public async Task<IActionResult> Edit(int AuthorId)
     {
-        var autor = await _autorService.GetAuthorByIdAsync(id);
+        var autor = await _autorService.GetAuthorByIdAsync(AuthorId);
 
         if (autor != null)
         {
@@ -73,25 +73,25 @@ public class AutorViewController : Controller
         }
         else
         {
-            return NotFound($"Autor com ID {id} não encontrado");
+            return NotFound($"Autor com ID {AuthorId} não encontrado");
         }
     }
 
     [HttpPut]
     [Route("Edit/{AuthorId}")]
-    public async Task<IActionResult> Edit(int id, AuthorModel autor)
+    public async Task<IActionResult> Edit(int AuthorId, AuthorModel autor)
     {
         try
         {
-            var updatedAutor = await _autorService.UpdateAuthorAsync(id, autor);
+            var updatedAutor = await _autorService.UpdateAuthorAsync(AuthorId, autor);
 
             if (updatedAutor != null)
             {
-                return RedirectToAction("Details", new { id = updatedAutor.AuthorId });
+                return RedirectToAction("Details", new { AuthorId = updatedAutor.AuthorId });
             }
             else
             {
-                return NotFound($"Autor com ID {id} não encontrado");
+                return NotFound($"Autor com ID {AuthorId} não encontrado");
             }
         }
         catch (Exception ex)
@@ -103,9 +103,9 @@ public class AutorViewController : Controller
 
     [HttpGet]
     [Route("Delete/{AuthorId}")]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(int AuthorId)
     {
-        var autor = await _autorService.GetAuthorByIdAsync(id);
+        var autor = await _autorService.GetAuthorByIdAsync(AuthorId);
 
         if (autor != null)
         {
@@ -113,17 +113,17 @@ public class AutorViewController : Controller
         }
         else
         {
-            return NotFound($"Autor com ID {id} não encontrado");
+            return NotFound($"Autor com ID {AuthorId} não encontrado");
         }
     }
 
     [HttpDelete]
     [Route("Delete/{AuthorId}")]
-    public async Task<IActionResult> DeleteConfirmed(int id)
+    public async Task<IActionResult> DeleteConfirmed(int AuthorId)
     {
         try
         {
-            bool deleted = await _autorService.DeleteAuthorAsync(id);
+            bool deleted = await _autorService.DeleteAuthorAsync(AuthorId);
 
             if (deleted)
             {
@@ -131,13 +131,13 @@ public class AutorViewController : Controller
             }
             else
             {
-                return NotFound($"Autor com ID {id} não encontrado");
+                return NotFound($"Autor com ID {AuthorId} não encontrado");
             }
         }
         catch (Exception ex)
         {
             ModelState.AddModelError("", $"Erro ao excluir autor: {ex.Message}");
-            return RedirectToAction("Delete", new { id = id });
+            return RedirectToAction("Delete", new { AuthorId = AuthorId });
         }
     }
 }

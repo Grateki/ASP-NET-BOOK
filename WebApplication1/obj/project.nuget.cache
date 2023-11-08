@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8rSEvC2Vfvn4/ZVX/3gCH9oOvzJvots8cF82X0ggJn9Gfoc/yR34UNBYXuaXyqDazFjIl41b2v7YtJ92cRJKFg==",
+  "dgSpecHash": "7blWv8FCTc/tPiAS4ec6drWt+DmisN5gP7Km40VdIppEDanJWLLsnhdRjqXjTa5QIYoSiyHr4omkA227YR0OYw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Rafael\\source\\repos\\ASP-NET-BOOK\\WebApplication1\\ControleDeLivros.csproj",
   "expectedPackageFiles": [
@@ -59,7 +59,9 @@
     "C:\\Users\\Rafael\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
-    "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
+    "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.24\\microsoft.aspnetcore.mvc.razor.extensions.6.0.24.nupkg.sha512",
+    "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\6.0.24\\microsoft.aspnetcore.mvc.razor.runtimecompilation.6.0.24.nupkg.sha512",
+    "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.build\\17.3.2\\microsoft.build.17.3.2.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.build.framework\\17.3.2\\microsoft.build.framework.17.3.2.nupkg.sha512",
@@ -70,7 +72,7 @@
     "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.codeanalysis.csharp.features\\4.0.0\\microsoft.codeanalysis.csharp.features.4.0.0.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.codeanalysis.csharp.workspaces\\4.0.0\\microsoft.codeanalysis.csharp.workspaces.4.0.0.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.codeanalysis.features\\4.0.0\\microsoft.codeanalysis.features.4.0.0.nupkg.sha512",
-    "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.codeanalysis.razor\\6.0.0\\microsoft.codeanalysis.razor.6.0.0.nupkg.sha512",
+    "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.codeanalysis.razor\\6.0.24\\microsoft.codeanalysis.razor.6.0.24.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.codeanalysis.scripting.common\\4.0.0\\microsoft.codeanalysis.scripting.common.4.0.0.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\4.0.0\\microsoft.codeanalysis.workspaces.common.4.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

@@ -12,28 +12,32 @@ build_property.RootNamespace = ControleDeLivros
 build_property.ProjectDir = C:\Users\Rafael\source\repos\ASP-NET-BOOK\WebApplication1\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\Rafael\source\repos\ASP-NET-BOOK\WebApplication1
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Autor/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/AutorView/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JWaWV3XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Autor/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JcRGVsZXRlLmNzaHRtbA==
+[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/AutorView/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JWaWV3XERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Autor/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JcRGV0YWlscy5jc2h0bWw=
+[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/AutorView/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JWaWV3XERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Autor/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JcRWRpdC5jc2h0bWw=
+[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/AutorView/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JWaWV3XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Autor/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JcSW5kZXguY3NodG1s
+[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/AutorView/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3JWaWV3XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Livro/Create.cshtml]
@@ -54,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Livro/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGl2cm9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Rafael/source/repos/ASP-NET-BOOK/WebApplication1/Views/Shared/_ValidationScriptsPartial.cshtml]

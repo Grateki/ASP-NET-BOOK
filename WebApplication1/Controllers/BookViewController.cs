@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 [Route("Livro")]
-[Area("Livro")]
+
 public class BookViewController : Controller
 {
     private readonly IBookService _booksService;
@@ -18,7 +18,7 @@ public class BookViewController : Controller
     }
 
     [HttpGet]
-    [Route("Index")]
+    [Route("Livro/Index")]
     public async Task<IActionResult> Index()
     {
         var books = await _booksService.GetAllBooksAsync();

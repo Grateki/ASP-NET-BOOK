@@ -5,7 +5,7 @@ using ControleDeLivros.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 [Route("Autor")]
-[Area("Autor")]
+
 public class AutorViewController : Controller
 {
     private readonly IAutorService _autorService;
